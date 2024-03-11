@@ -30,8 +30,9 @@ class Store(models.Model):
 
 class User(AbstractUser):
     store = models.ForeignKey(Store, on_delete=models.CASCADE, null=True, blank=True)
-    code = models.CharField(max_length=50) #each user have a different code
+    code = models.CharField(max_length=50, null=True, blank=True) 
     groups = models.ManyToManyField(Group)
+    phonenumber = models.CharField(max_length=13)
     
     def code_generator(self):
         length = 5
